@@ -1,0 +1,753 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Para Lorena 🌻</title>
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+body {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #40300c,
+            #161208 45%,
+            #050505 100%
+        );
+
+    color: white;
+
+}
+
+
+#inicio {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 10;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+}
+
+
+.contenido {
+
+    max-width: 700px;
+
+    padding: 30px;
+
+}
+
+
+.pequeno {
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: 13px;
+
+    color: #ffd83d;
+
+    margin-bottom: 20px;
+
+}
+
+
+h1 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            5rem,
+            15vw,
+            10rem
+        );
+
+    line-height: .8;
+
+    color: #ffd83d;
+
+    text-shadow:
+
+        0 0 15px
+        rgba(255,215,50,.4),
+
+        0 0 50px
+        rgba(255,190,0,.25);
+
+}
+
+
+.subtitulo {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            1.2rem,
+            3vw,
+            2rem
+        );
+
+    color: #fff3bd;
+
+    margin-top: 30px;
+
+}
+
+
+.descripcion {
+
+    color: #cfc7b0;
+
+    line-height: 1.8;
+
+    max-width: 550px;
+
+    margin:
+        20px auto;
+
+}
+
+
+button {
+
+    margin-top: 25px;
+
+    border: none;
+
+    padding:
+        17px 32px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe66a,
+            #ffbd00
+        );
+
+    color: #191300;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 25px
+        rgba(255,210,40,.3),
+
+        0 10px 35px
+        rgba(0,0,0,.4);
+
+    transition: .3s;
+
+}
+
+
+button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+
+        0 0 40px
+        rgba(255,215,50,.55);
+
+}
+
+
+#lluvia {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    display: none;
+
+}
+
+
+.flor {
+
+    position: absolute;
+
+    top: -120px;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    will-change:
+        transform,
+        opacity;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,215,40,.5)
+        );
+
+    animation:
+        caer linear forwards;
+
+}
+
+
+@keyframes caer {
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                -120px,
+                0
+            )
+            rotate(0deg)
+            scale(.5);
+
+        opacity: 0;
+
+    }
+
+
+    8% {
+
+        opacity: 1;
+
+    }
+
+
+    50% {
+
+        transform:
+            translate3d(
+                var(--movimiento),
+                50vh,
+                0
+            )
+            rotate(180deg)
+            scale(1);
+
+    }
+
+
+    100% {
+
+        transform:
+            translate3d(
+                calc(var(--movimiento) * -1),
+                115vh,
+                0
+            )
+            rotate(420deg)
+            scale(1.15);
+
+        opacity: .95;
+
+    }
+
+}
+
+
+#mensajeFinal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 200;
+
+    pointer-events: none;
+
+}
+
+
+.mensajeCaja {
+
+    padding: 35px;
+
+    max-width: 700px;
+
+    background:
+        rgba(20,15,5,.72);
+
+    border:
+        1px solid
+        rgba(255,215,60,.3);
+
+    border-radius: 25px;
+
+    backdrop-filter:
+        blur(12px);
+
+    animation:
+        aparecer 1.2s ease;
+
+}
+
+
+.mensajeCaja h2 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            2.5rem,
+            7vw,
+            5rem
+        );
+
+    color: #ffd83d;
+
+    margin-bottom: 20px;
+
+}
+
+
+.mensajeCaja p {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #fff5ce;
+
+}
+
+
+.firma {
+
+    margin-top: 25px;
+
+    color: #ffd83d;
+
+    font-style: italic;
+
+    font-size: 20px;
+
+}
+
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .contenido {
+
+        padding: 20px;
+
+    }
+
+
+    .descripcion {
+
+        font-size: 14px;
+
+    }
+
+
+    button {
+
+        padding:
+            15px 25px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="inicio">
+
+    <div class="contenido">
+
+
+        <div class="pequeno">
+
+            Un regalo para ti
+
+        </div>
+
+
+        <h1>
+
+            Lorena
+
+        </h1>
+
+
+        <div class="subtitulo">
+
+            Hoy quiero regalarte
+            flores amarillas 🌻
+
+        </div>
+
+
+        <p class="descripcion">
+
+            Porque hay personas que merecen
+            recibir algo bonito sin necesidad
+            de una razón especial.
+
+        </p>
+
+
+        <button
+            onclick="comenzarLluvia()">
+
+            🌻 Recibir mis flores
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<div id="lluvia"></div>
+
+
+
+<div id="mensajeFinal">
+
+    <div class="mensajeCaja">
+
+        <h2>
+
+            Para ti, Lorena 💛
+
+        </h2>
+
+
+        <p>
+
+            Si pudiera convertir todos
+            mis buenos deseos para ti
+            en flores, probablemente
+            necesitaríamos un jardín entero.
+
+            <br><br>
+
+            Por ahora...
+
+            <br>
+
+            te regalo estas. 🌻
+
+        </p>
+
+
+        <div class="firma">
+
+            Con cariño,
+
+            <br>
+
+            Allan ❤️
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+function crearFlor() {
+
+    const flor =
+        document.createElement("div");
+
+
+    flor.className =
+        "flor";
+
+
+    const tipos = [
+
+        "🌻",
+        "🌻",
+        "🌻",
+        "🌻",
+        "🌻",
+        "🌼",
+        "🌼",
+        "💛"
+
+    ];
+
+
+    flor.textContent =
+        tipos[
+            Math.floor(
+                Math.random()
+                * tipos.length
+            )
+        ];
+
+
+    flor.style.left =
+        Math.random() * 100 + "vw";
+
+
+    flor.style.fontSize =
+        (
+            35 +
+            Math.random() * 65
+        ) + "px";
+
+
+    flor.style.setProperty(
+        "--movimiento",
+        (
+            -100 +
+            Math.random() * 200
+        ) + "px"
+    );
+
+
+    const velocidad =
+        2.2 +
+        Math.random() * 3;
+
+
+    flor.style.animationDuration =
+        velocidad + "s";
+
+
+    document
+        .getElementById("lluvia")
+        .appendChild(flor);
+
+
+    setTimeout(
+        () => {
+
+            flor.remove();
+
+        },
+        (velocidad + .5) * 1000
+    );
+
+}
+
+
+
+function comenzarLluvia() {
+
+
+    const inicio =
+        document.getElementById(
+            "inicio"
+        );
+
+
+    const lluvia =
+        document.getElementById(
+            "lluvia"
+        );
+
+
+    inicio.style.opacity = "0";
+
+    inicio.style.transform =
+        "scale(1.08)";
+
+
+    setTimeout(() => {
+
+        inicio.style.display =
+            "none";
+
+        lluvia.style.display =
+            "block";
+
+    }, 900);
+
+
+
+    for (
+        let i = 0;
+        i < 250;
+        i++
+    ) {
+
+        setTimeout(
+            () => {
+
+                crearFlor();
+
+            },
+            i * 12
+        );
+
+    }
+
+
+
+    const lluviaContinua =
+        setInterval(() => {
+
+
+            for (
+                let i = 0;
+                i < 20;
+                i++
+            ) {
+
+                crearFlor();
+
+            }
+
+
+        }, 150);
+
+
+
+    setTimeout(() => {
+
+        clearInterval(
+            lluviaContinua
+        );
+
+
+    }, 12000);
+
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "mensajeFinal"
+            )
+            .style.display =
+                "flex";
+
+    }, 9500);
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
+```
