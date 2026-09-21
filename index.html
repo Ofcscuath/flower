@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -106,8 +104,4 @@ function createHeart(){
 setInterval(createHeart,650);
 </script>
 </body>
-</html>'''
-
-path = Path("/mnt/data/Para_Lorena_actualizada.html")
-path.write_text(html, encoding="utf-8")
-print(f"Listo: {path}")
+</html>
